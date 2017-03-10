@@ -15,9 +15,13 @@ data=r.text
 soup = BeautifulSoup(data, "html.parser")
 
 title = soup.title.text
+
+bio = soup.find('p', {'class':'ProfileHeaderCard-bio'}).text
+
 tweets = soup.findAll('div', {'class':'tweet'})
 counter = 1
 print '\n' + title + '\n'
+print '\n' + bio + '\n'
 
 for tweet in tweets[:20]:
     print str(counter) + '.  ' + tweet.find('p').text + '\n'
